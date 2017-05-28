@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head id="head">
+
+	<title>Blue Bank</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+
+<h:body
+	style="background: url(https://cdn.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-9-full.jpg) repeat !important;">
+
+	<h:outputStylesheet name="css/materialize.css" />
+
+	<h:outputScript name="js/materialize.js" />
+	<div class="center-align">
+		<img style="width: 30%; margin-top: 150px;"
+			src="resources/images/login_logo.png" />
+	</div>
+
+	<f:view transient="true">
+		<h:form class="col s8" id="formLogin">
+			<div style="margin-top: 100px;">
+
+				<div class="row" style="max-width: 300px;">
+					<div class="input-field col s12">
+
+						<p:inputText class="validate" type="text" id="login"
+							styleClass="input" required="true"
+							requiredMessage="Login obrigatório" inline="true"
+							value="#{HomePageController.login}" />
+
+						<h:outputLabel value="Login" for="login" />
+					</div>
+
+				</div>
+
+				<div class="row" style="max-width: 300px;">
+					<div class="input-field col s12">
+						<h:outputLabel value="Senha" for="senha" />
+						<p:password id="senha" value="#{HomePageController.senha}"
+							inline="true" class="validate" styleClass="input" />
+					</div>
+				</div>
+				<div class="center-align">
+					<p:commandButton class="waves-effect waves-light btn" id="loginbtn"
+						action="#{HomePageController.btnLogin()}">
+
+					</p:commandButton>
+				</div>
+			</div>
+		</h:form>
+	</f:view>
+</h:body>
+</html>

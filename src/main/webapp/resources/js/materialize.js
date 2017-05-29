@@ -14,6 +14,8 @@ if (typeof(jQuery) === 'undefined') {
     jQuery = $;
   }
 }
+
+
 ;/*
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  *
@@ -52,6 +54,22 @@ if (typeof(jQuery) === 'undefined') {
 */
 
 // t: current time, b: begInnIng value, c: change In value, d: duration
+
+function validateInput(regexString) {
+    var theEvent = window.event || event;
+    var key = theEvent.keyCode || theEvent.which;
+    if (key >= 46) {
+        key = String.fromCharCode(key);
+        var regex = new RegExp("^" + regexString + "$");
+        if (!regex.test(key)) {
+            theEvent.returnValue = false;
+            if (theEvent.preventDefault) {
+                theEvent.preventDefault();
+            }
+        }
+    }
+}
+
 jQuery.easing['jswing'] = jQuery.easing['swing'];
 
 jQuery.extend( jQuery.easing,

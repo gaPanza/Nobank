@@ -3,11 +3,16 @@ package dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+
+import bean.Accountholder;
 
 public class AccountholderDAO implements AccountholderDAOInterface<Accountholder, Serializable> {
 	private Session currentSession;
@@ -84,6 +89,21 @@ public class AccountholderDAO implements AccountholderDAOInterface<Accountholder
 	}
 
 	@Override
+	public Accountholder findByCpfAndPassword(Long cpf, String password) {
+
+		Query query = getCurrentSession().createNativeQuery(
+				"SELECT * FROM Accountholder WHERE cpf = ?1 AND password = ?2", "AccountholderbyCPF");
+		query.setParameter(1, cpf);
+		query.setParameter(2, password);
+		try {
+			Accountholder x = (Accountholder) query.getSingleResult();
+			return x;
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+
+	@Override
 	public void delete(Accountholder entity) {
 		getCurrentSession().delete(entity);
 	}
@@ -106,6 +126,18 @@ public class AccountholderDAO implements AccountholderDAOInterface<Accountholder
 
 			delete(entity);
 
+		}
+	}
+
+	public Accountholder findByCpf(Long cpf) {
+		Query query = getCurrentSession().createNativeQuery("SELECT * FROM Accountholder WHERE cpf = ?1",
+				"AccountholderbyCPF");
+		query.setParameter(1, cpf);
+		try {
+			Accountholder x = (Accountholder) query.getSingleResult();
+			return x;
+		} catch (NoResultException e) {
+			return null;
 		}
 	}
 

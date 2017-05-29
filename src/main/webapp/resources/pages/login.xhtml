@@ -44,15 +44,17 @@
 				<div class="row" style="max-width: 300px;">
 					<div class="input-field col s12">
 						<h:outputLabel value="Senha" for="senha" />
-						<p:password id="senha" value="#{HomePageController.senha}"
+						<p:password id="senha" value="#{HomePageController.password}"
 							inline="true" class="validate" styleClass="input" />
 					</div>
 				</div>
 				<div class="center-align">
-					<p:commandButton class="waves-effect waves-light btn" id="loginbtn"
+					<h:commandButton id="loginbtn" value="Entrar"
+						style="background-color: #1a237e;"
+						class="waves-effect waves-light btn"
 						action="#{HomePageController.btnLogin()}">
+					</h:commandButton>
 
-					</p:commandButton>
 				</div>
 			</div>
 		</h:form>

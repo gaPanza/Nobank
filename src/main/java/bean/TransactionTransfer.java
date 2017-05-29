@@ -1,0 +1,94 @@
+package bean;
+
+import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.SqlResultSetMapping;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TransactionTransfer")
+@SqlResultSetMapping(name = "transactiontransferbyacc", classes = {
+		@ConstructorResult(targetClass = TransactionTransfer.class, columns = { @ColumnResult(name = "id"),
+				@ColumnResult(name = "idAccountholder"), @ColumnResult(name = "valueTransfer", type = Double.class),
+				@ColumnResult(name = "idRecipient"), @ColumnResult(name = "date", type = Timestamp.class) }) })
+public class TransactionTransfer {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "checkId_seqTrans")
+	@SequenceGenerator(name = "checkId_seqTrans", sequenceName = "checkId_seqTrans", allocationSize = 1)
+	private long id;
+
+	@Column
+	private int idAccountholder;
+
+	@Column
+	private Double valueTransfer;
+
+	@Column
+	private int idRecipient; // Accountholder que recebe o dinheiro
+
+	@Column
+	private Timestamp date;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public int getIdAccountholder() {
+		return idAccountholder;
+	}
+
+	public void setIdAccountholder(int idAccountholder) {
+		this.idAccountholder = idAccountholder;
+	}
+
+	public Double getValueTransfer() {
+		return valueTransfer;
+	}
+
+	public void setValueTransfer(Double valueTransfer) {
+		this.valueTransfer = valueTransfer;
+	}
+
+	public int getIdRecipient() {
+		return idRecipient;
+	}
+
+	public void setIdRecipient(int idRecipient) {
+		this.idRecipient = idRecipient;
+	}
+
+	public Timestamp getDate() {
+		return date;
+	}
+
+	public void setDate(Timestamp date) {
+		this.date = date;
+	}
+
+	public TransactionTransfer(long id, int idAccountholder, Double valueTransfer, int idRecipient, Timestamp date) {
+		super();
+		this.id = id;
+		this.idAccountholder = idAccountholder;
+		this.valueTransfer = valueTransfer;
+		this.idRecipient = idRecipient;
+		this.date = date;
+	}
+
+	public TransactionTransfer() {
+
+	}
+
+}

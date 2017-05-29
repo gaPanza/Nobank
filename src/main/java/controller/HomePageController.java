@@ -1,62 +1,64 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import dao.Accountholder;
+import bean.Accountholder;
+import bean.TransactionTransfer;
 import serviceImpl.AccountHolderServiceImpl;
+import serviceImpl.TransactionServiceImpl;
 
 @ManagedBean(name = "HomePageController")
 @SessionScoped
 public class HomePageController {
-	private String login;
-	private String senha;
+	private static Accountholder accountholder;
+	private Long login;
+	private String password;
 	private Boolean isAuth;
-
-	public String xd() {
-		login = "hue";
-		System.out.println("hue");
-		return "";
-	}
+	private static Double money;
+	private List<TransactionTransfer> topTransactions = new ArrayList<TransactionTransfer>();
 
 	public String btnLogin() {
-		System.out.println("Aqui");
-
-		Accountholder accHld = new Accountholder();
-		accHld.setCpf(1409628876);
-		accHld.setAccountNumber(1);
-		accHld.setAgencyNumber(1);
-		accHld.setPassword("admin");
 
 		AccountHolderServiceImpl accountHolderServiceImpl = new AccountHolderServiceImpl();
+		accountholder = accountHolderServiceImpl.findByCpfAndPassword(login, password);
 
-		accountHolderServiceImpl.persist(accHld);
+		TransactionServiceImpl transactionServiceImpl = new TransactionServiceImpl();
+		topTransactions = transactionServiceImpl.findTopTransactions(accountholder);
 
-		System.out.println(accHld.getId());
-
-		return "";
+		if (accountholder.equals(null)) {
+			return "";
+		} else {
+			money = accountholder.getMoney();
+			return "accountManager.xhtml";
+		}
 	}
 
-	public HomePageController() {
-		login = new String();
-		senha = new String();
-		isAuth = false;
+	public static Accountholder getAccountholder() {
+		return accountholder;
 	}
 
-	public String getLogin() {
+	public static void setAccountholder(Accountholder accountholder) {
+		HomePageController.accountholder = accountholder;
+	}
+
+	public Long getLogin() {
 		return login;
 	}
 
-	public void setLogin(String login) {
+	public void setLogin(Long login) {
 		this.login = login;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Boolean getIsAuth() {
@@ -65,6 +67,22 @@ public class HomePageController {
 
 	public void setIsAuth(Boolean isAuth) {
 		this.isAuth = isAuth;
+	}
+
+	public Double getMoney() {
+		return money;
+	}
+
+	public static void setMoney(Double money) {
+		HomePageController.money = money;
+	}
+
+	public List<TransactionTransfer> getTopTransactions() {
+		return topTransactions;
+	}
+
+	public void setTopTransactions(List<TransactionTransfer> topTransactions) {
+		this.topTransactions = topTransactions;
 	}
 
 }

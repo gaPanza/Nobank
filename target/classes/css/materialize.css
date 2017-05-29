@@ -3,8 +3,12 @@
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
-.divisor{
-	margin-top: 250px;
+.logo-right{
+	right: 0.1rem;
+    left: auto;
+    margin-top: 14px;
+    width: 10%;
+    position: absolute;
 }
 
 .materialize-red {
@@ -5097,7 +5101,7 @@ small {
 
 .btn, .btn-large,
 .btn-flat {
-  border: none;
+  border: none; 
   border-radius: 2px;
   display: inline-block;
   height: 36px;

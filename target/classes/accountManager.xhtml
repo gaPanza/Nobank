@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head id="head">
+
+	<title>Sua Conta Corrente</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+
+<h:body
+	style="background: url(http://www.allwhitebackground.com/images/2/2280.jpg) repeat !important;">
+
+	<h:outputStylesheet name="css/materialize.css" />
+
+	<h:outputScript name="js/materialize.js" />
+
+
+	<f:view transient="true">
+		<nav>
+			<div style="background-color: #1a237e" class="nav-wrapper">
+				<img class="logo-right" src="resources/images/login_logo.png" />
+				<ul id="nav-mobile" class="left hide-on-med-and-down">
+					<li><a href="accountManager.xhtml">Sua conta</a></li>
+					<li><a href="accountManager.xhtml">Transações</a></li>
+					<li><a href="login.xhtml">Sair</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="row">
+			<div class="col s12 m4">
+				<div class="card blue-grey darken-1">
+					<div class="card-content white-text">
+						<span class="card-title">Saldo -
+							#{HomePageController.money} </span>
+						<p>Transações Recentes:</p>
+						<p:dataList value="#{HomePageController.topTransactions}"
+							var="transaction" class="collection">
+							<li class="collection-item">#{transaction.valueTransfer}</li>
+						</p:dataList>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m4">
+				<div class="card blue-grey darken-1">
+					<div class="card-content white-text">
+						<span class="card-title">Realizar Transferência</span>
+						<p>Realize uma transferência para outras contas NoBank</p>
+					</div>
+					<div class="card-action">
+						<a href="transferMoney.xhtml">Transferir</a>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m4">
+				<div class="card blue-grey darken-1">
+					<div class="card-content white-text">
+						<span class="card-title">Pagar uma conta</span>
+						<p>Utilize o sistema para realizar pagamento de uma conta</p>
+					</div>
+					<div class="card-action">
+						<a href="pagar.xhtml">Pagar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</f:view>
+</h:body>
+</html>

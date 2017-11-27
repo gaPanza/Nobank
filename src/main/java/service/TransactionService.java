@@ -2,8 +2,8 @@ package service;
 
 import java.util.List;
 
-import bean.Accountholder;
-import bean.TransactionTransfer;
+import model.Accountholder;
+import model.TransactionTransfer;
 
 public interface TransactionService {
 

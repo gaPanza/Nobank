@@ -3,7 +3,7 @@ package dao;
 import java.io.Serializable;
 import java.util.List;
 
-import bean.Accountholder;
+import model.Accountholder;
 
 public interface AccountholderDAOInterface<T, Id extends Serializable> {
 	public void persist(T entity);

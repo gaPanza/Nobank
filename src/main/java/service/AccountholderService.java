@@ -2,7 +2,7 @@ package service;
 
 import java.util.List;
 
-import bean.Accountholder;
+import model.Accountholder;
 
 public interface AccountholderService {
 

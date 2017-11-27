@@ -12,7 +12,7 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import bean.Accountholder;
+import model.Accountholder;
 
 public class AccountholderDAO implements AccountholderDAOInterface<Accountholder, Serializable> {
 	private Session currentSession;
@@ -41,7 +41,8 @@ public class AccountholderDAO implements AccountholderDAOInterface<Accountholder
 		currentTransaction.commit();
 		currentSession.close();
 	}
-
+	
+	//Factory Method
 	private static SessionFactory getSessionFactory() {
 		Configuration configuration = new Configuration().configure("hibernate.cfg.xml")
 				.addAnnotatedClass(Accountholder.class);
@@ -92,7 +93,7 @@ public class AccountholderDAO implements AccountholderDAOInterface<Accountholder
 	public Accountholder findByCpfAndPassword(Long cpf, String password) {
 
 		Query query = getCurrentSession().createNativeQuery(
-				"SELECT * FROM Accountholder WHERE cpf = ?1 AND password = ?2", "AccountholderbyCPF");
+				"SELECT * FROM Accountholder WHERE cpf = ?1 AND password = ?2", Accountholder.class);
 		query.setParameter(1, cpf);
 		query.setParameter(2, password);
 		try {
@@ -131,7 +132,7 @@ public class AccountholderDAO implements AccountholderDAOInterface<Accountholder
 
 	public Accountholder findByCpf(Long cpf) {
 		Query query = getCurrentSession().createNativeQuery("SELECT * FROM Accountholder WHERE cpf = ?1",
-				"AccountholderbyCPF");
+				Accountholder.class);
 		query.setParameter(1, cpf);
 		try {
 			Accountholder x = (Accountholder) query.getSingleResult();

@@ -1,0 +1,11 @@
+Necessário rodar em TOMCAT local, com banco de dados POSTGRESQL versão 9.4.1 (ultima).
+A conexão necessita do banco "postgres" para funcionar.
+A conexão precisa ter o superadmin com login : admin e senha : admin para funcionar corretamente.
+
+Caso necessário, mudar as configurações do banco no hibernate.xfg localizado no pacote DAO do projeto.
+
+Ao criar o banco, necessário criar dois usuários na tabela AccountHolder, para fazer as operações no website.
+
+Acesso em localhost:8080/blueBank
+
+Desenvolvido com eclipse jee neon v3

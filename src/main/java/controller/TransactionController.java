@@ -6,8 +6,8 @@ import java.util.Calendar;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import bean.Accountholder;
-import bean.TransactionTransfer;
+import model.Accountholder;
+import model.TransactionTransfer;
 import serviceImpl.AccountHolderServiceImpl;
 import serviceImpl.TransactionServiceImpl;
 

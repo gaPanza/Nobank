@@ -2,11 +2,11 @@ package serviceImpl;
 
 import java.util.List;
 
-import bean.Accountholder;
 import dao.AccountholderDAO;
+import model.Accountholder;
 import service.AccountholderService;
 
-//ImplementaÃ§Ã£o do serviÃ§o para acessar os mÃ©todos de transaÃ§Ã£o para AccountHolder.java , com Singleton e Hibernate.
+//Implementação do serviço para acessar os métodos de transação para AccountHolder.java , com Singleton e Hibernate.
 
 public class AccountHolderServiceImpl implements AccountholderService {
 

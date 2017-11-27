@@ -14,15 +14,13 @@
 </h:head>
 
 <h:body
-	style="background: url(https://cdn.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-9-full.jpg) repeat !important;">
+	style="background: url(http://www.allwhitebackground.com/images/2/2280.jpg) repeat !important;">
 
 	<h:outputStylesheet name="css/materialize.css" />
 
 	<h:outputScript name="js/materialize.js" />
-	<div class="center-align">
-		<img style="width: 30%; margin-top: 150px;"
-			src="resources/images/login_logo.jpeg" />
-	</div>
+	<div class="center-align" style="font-size: 400%; margin-top: 150px;">
+		NoBank</div>
 
 	<f:view transient="true">
 		<h:form class="col s8" id="formLogin">
@@ -54,10 +52,19 @@
 						class="waves-effect waves-light btn"
 						action="#{HomePageController.btnLogin()}">
 					</h:commandButton>
-
 				</div>
 			</div>
 		</h:form>
+		<h:form class="col s8" id="formLogin">
+			<div class="center-align">
+				<h:commandButton id="createUser" value="Criar Conta"
+					style="background-color: #1a237e; margin-top: 20px;"
+					class="waves-effect waves-light btn"
+					action="#{HomePageController.createUser()}">
+				</h:commandButton>
+			</div>
+		</h:form>
+
 	</f:view>
 </h:body>
 </html>

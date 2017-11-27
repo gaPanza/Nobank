@@ -1,0 +1,11 @@
+Justificativas técnicas:
+
+Desenvolvido com JSF, Hibernate para desenvolvimento mais rápido da aplicação. 
+Utilizado Primefaces para melhor personalização de componentes do JSF.
+Utilizado MaterializeCSS e MaterializeJs para componentes da UI possuirem melhor fluidez e design Material.
+
+O banco de dados POSTGRES foi escolhido pois é um banco de fácil integração com o Hibernate e é open source.
+
+Tomcat 7.0 para deploy e testes.
+
+Junit + Selenium para testes unitários.

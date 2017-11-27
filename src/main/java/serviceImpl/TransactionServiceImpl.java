@@ -3,9 +3,9 @@ package serviceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.Accountholder;
-import bean.TransactionTransfer;
 import dao.TransactionDAO;
+import model.Accountholder;
+import model.TransactionTransfer;
 import service.TransactionService;
 
 public class TransactionServiceImpl implements TransactionService {

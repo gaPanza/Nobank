@@ -12,9 +12,10 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import bean.Accountholder;
-import bean.TransactionTransfer;
+import model.Accountholder;
+import model.TransactionTransfer;
 
+//Implementação da Abstract Factory #1
 public class TransactionDAO implements TransactionDAOInterface<TransactionTransfer, Serializable> {
 	private Session currentSession;
 	private Transaction currentTransaction;
@@ -43,6 +44,7 @@ public class TransactionDAO implements TransactionDAOInterface<TransactionTransf
 		currentSession.close();
 	}
 
+	//Factory Method
 	private static SessionFactory getSessionFactory() {
 		Configuration configuration = new Configuration().configure("hibernate.cfg.xml")
 				.addAnnotatedClass(TransactionTransfer.class);
@@ -85,7 +87,7 @@ public class TransactionDAO implements TransactionDAOInterface<TransactionTransf
 		List<TransactionTransfer> topTransactions = new ArrayList<TransactionTransfer>();
 		Query query = getCurrentSession().createNativeQuery(
 				"SELECT * FROM transactiontransfer WHERE idaccountholder = ?1 OR idrecipient = ?2",
-				"transactiontransferbyacc");
+				TransactionTransfer.class);
 
 		query.setParameter(1, accountholder.getId());
 		query.setParameter(2, accountholder.getId());

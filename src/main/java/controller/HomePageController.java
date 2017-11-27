@@ -6,8 +6,8 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import bean.Accountholder;
-import bean.TransactionTransfer;
+import model.Accountholder;
+import model.TransactionTransfer;
 import serviceImpl.AccountHolderServiceImpl;
 import serviceImpl.TransactionServiceImpl;
 
@@ -35,6 +35,10 @@ public class HomePageController {
 			money = accountholder.getMoney();
 			return "accountManager.xhtml";
 		}
+	}
+
+	public String createUser() {
+		return "createUser.xhtml";
 	}
 
 	public static Accountholder getAccountholder() {

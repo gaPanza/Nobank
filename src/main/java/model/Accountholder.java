@@ -1,8 +1,6 @@
 package model;
 
 import javax.persistence.Column;
-import javax.persistence.ColumnResult;
-import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 
 @Entity
@@ -39,7 +36,7 @@ public class Accountholder {
 	private Double money;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Manager.id", nullable = false)
+	@JoinColumn(name = "Manager_id")
 	private Manager manager;
 
 	public Manager getManager() {
@@ -113,6 +110,18 @@ public class Accountholder {
 		this.agencyNumber = agencyNumber;
 		this.password = password;
 		this.money = money;
+	}
+	
+	
+
+	public Accountholder(Long cpf, Integer accountNumber, Integer agencyNumber, String password, Double money,
+			Manager manager) {
+		this.cpf = cpf;
+		this.accountNumber = accountNumber;
+		this.agencyNumber = agencyNumber;
+		this.password = password;
+		this.money = money;
+		this.manager = manager;
 	}
 
 	public Accountholder() {

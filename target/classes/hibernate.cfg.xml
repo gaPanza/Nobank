@@ -19,7 +19,9 @@
 		<property name="show_sql">true</property>
 
 		<property name="hibernate.current_session_context_class">thread</property>
-
+		<mapping class="model.Accountholder" />
+		<mapping class="model.TransactionTransfer" />
+		<mapping class="model.Manager" />
 	</session-factory>
 
 </hibernate-configuration>

@@ -13,6 +13,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import model.Accountholder;
+import model.Manager;
 
 public class AccountholderDAO implements AccountholderDAOInterface<Accountholder, Serializable> {
 	private Session currentSession;
@@ -45,7 +46,7 @@ public class AccountholderDAO implements AccountholderDAOInterface<Accountholder
 	//Factory Method
 	private static SessionFactory getSessionFactory() {
 		Configuration configuration = new Configuration().configure("hibernate.cfg.xml")
-				.addAnnotatedClass(Accountholder.class);
+				.addAnnotatedClass(Accountholder.class).addAnnotatedClass(Manager.class);
 		StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
 				.applySettings(configuration.getProperties());
 		SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());

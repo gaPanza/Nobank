@@ -8,21 +8,20 @@
 
 	<session-factory>
 
-		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-
-		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-
-		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</property>
-		<property name="hibernate.connection.username">admin</property>
-		<property name="hibernate.connection.password">admin</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<property name="hibernate.connection.url">jdbc:mysql://35.186.177.5:3306/nobank</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">123mudar</property>
 
 		<property name="hibernate.hbm2ddl.auto">update</property>
 
 		<property name="show_sql">true</property>
 
 		<property name="hibernate.current_session_context_class">thread</property>
-		<mapping class="main.bean.Accountholder" />
-		<mapping class="main.bean.TransactionTransfer" />
+		<mapping class="model.Accountholder" />
+		<mapping class="model.TransactionTransfer" />
+		<mapping class="model.Manager" />
 	</session-factory>
 
 </hibernate-configuration>

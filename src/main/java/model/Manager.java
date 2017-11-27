@@ -2,6 +2,7 @@ package model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,24 +13,24 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name = "Manager")
 @Table(name = "Manager")
 public class Manager {
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "manager", cascade = CascadeType.ALL, targetEntity = Accountholder.class)
 	private List<Accountholder> accountholders;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "checkid_seq")
 	@SequenceGenerator(name = "checkid_seq", sequenceName = "checkid_seq", allocationSize = 1)
 	private int id;
-	
+
 	@Column
 	private Long cpf;
-	
+
 	@Column
 	private String password;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Manager")
-	private List<Accountholder> getAccountHolders(){
+
+	private List<Accountholder> getAccountHolders() {
 		return accountholders;
 	}
 
@@ -70,6 +71,10 @@ public class Manager {
 		this.accountholders = accountholders;
 		this.cpf = cpf;
 		this.password = password;
+	}
+
+	public Manager() {
+
 	}
 
 }

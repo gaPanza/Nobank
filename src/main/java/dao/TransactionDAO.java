@@ -13,9 +13,10 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import model.Accountholder;
+import model.Manager;
 import model.TransactionTransfer;
 
-//Implementação da Abstract Factory #1
+//Implementaï¿½ï¿½o da Abstract Factory #1
 public class TransactionDAO implements TransactionDAOInterface<TransactionTransfer, Serializable> {
 	private Session currentSession;
 	private Transaction currentTransaction;
@@ -44,10 +45,11 @@ public class TransactionDAO implements TransactionDAOInterface<TransactionTransf
 		currentSession.close();
 	}
 
-	//Factory Method
+	// Factory Method
 	private static SessionFactory getSessionFactory() {
 		Configuration configuration = new Configuration().configure("hibernate.cfg.xml")
-				.addAnnotatedClass(TransactionTransfer.class);
+				.addAnnotatedClass(TransactionTransfer.class).addAnnotatedClass(Manager.class)
+				.addAnnotatedClass(Accountholder.class);
 		StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
 				.applySettings(configuration.getProperties());
 		SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
